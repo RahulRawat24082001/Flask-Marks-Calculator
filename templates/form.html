@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Your Scores</h1>
+        <form action="/form" method="post">
+            <input type="number" name="Maths" placeholder="Enter Maths score" min="0" required>
+            <input type="number" name="English" placeholder="Enter English score" min="0" required>
+            <input type="number" name="Physics" placeholder="Enter Physics score" min="0" required>
+            <input type="number" name="Chemistry" placeholder="Enter Chemistry score" min="0" required>
+            <input type="number" name="Biology" placeholder="Enter Biology score" min="0" required>
+            <button type="submit">Submit</button>
+        </form>
+        {% if score is defined %}
+            <div id="result">
+                {% if score >= 50 %}
+                    <p style="color: green;">The person has passed with an average score of {{ score }}</p>
+                {% else %}
+                    <p style="color: red;">The person has failed with an average score of {{ score }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
